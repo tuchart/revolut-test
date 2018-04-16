@@ -31,7 +31,9 @@ public class AccountDaoAdapter {
         entityManager.getTransaction().begin();
         entityManager.persist(account);
         entityManager.getTransaction().commit();
-        return entityManager.find(Account.class, account.getId());
+        Account createdAccount = entityManager.find(Account.class, account.getId());
+        log.info("createAccount.exit");
+        return createdAccount;
     }
 
     public Account findOne(BigInteger id) {
